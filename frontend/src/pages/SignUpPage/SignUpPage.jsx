@@ -19,11 +19,13 @@ export default function SignUpPage() {
     repitPassword: "",
   })
 
-  const onSubmitSignUp = () => {
+  const onSubmitSignUp = (event) => {
+    event.preventDefault();
     form.weigth = Number(form.weigth)
     axios
       .post(`${BASE_URL}/users/signup`, form)
       .then( res => {
+        console.log(res.data.token)
         localStorage.setItem('token', res.data.token);
         alert("Cadastro realizado com sucesso!");
         goToMainPage(navigate);

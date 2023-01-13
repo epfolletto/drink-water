@@ -16,7 +16,8 @@ export default function LoginPage() {
     password: "",
   })
 
-  const onSubmitLogin = () => {
+  const onSubmitLogin = (event) => {
+    event.preventDefault();
     axios
     .post(`${BASE_URL}/users/login`, form)
     .then( res => {
